@@ -1,87 +1,138 @@
-" scriptの文字コード
+" --- dein scripts ---
+
+" set dein.vim path
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+" check installation dein.vim
+if &runtimepath !~# '/dein.vim'
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+endif
+
+" start setting
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  " .toml file directory
+  let s:toml_dir = expand('~/.vim/rc')
+
+  " load .toml file
+  call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
+  call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
+
+  " end setting
+  call dein#end()
+  call dein#save_state()
+endif
+
+" plugin install check
+if dein#check_install()
+  call dein#install()
+endif
+
+" enable synax highlight
+syntax enable
+
+" set color scheme
+colorscheme onedark
+
+" --- end dein scripts ---
+
+
+
+" --- vim settings ---
+
+" script encoding
 scriptencoding utf-8
 
-" バックアップファイル
+" backup file
 set nobackup
 set noswapfile
 
-" 修正時に自動リロード
+" auto reload when file changed
 set autoread
 
-" バッファ変更時に警告なし
+" no warning when buffer changed
 set hidden
 
-" 入力コマンドの表示
+" show input command
 set showcmd
 
-" クリップボードの使用
+" use clipboard
 set clipboard=unnamed,autoselect
 
-" ハイライト表示
+" highlight
 set showmatch
 
-" 行の折り返しを無効
+" diable line wrap
 set nowrap
 
-" 行をまたいで移動 
+" move cursor 
 set whichwrap=b,s,h,l,<,>,[,],~
 
-" 矩形選択
+" rectangle select
 set virtualedit=onemore
 
-" シンタックスハイライトの有効
-syntax enable
-
-" バックスペースの有効
+" enable backspace
 set backspace=indent,eol,start
 
-" 行番号の表示
+" show line number
 set number
 
-" ターミナルのタイトル
+" set terminal title
 set title
 
-" ステータスバーを常に表示
+" always show status bar
 set laststatus=2
 
-" カラースキーマ
-colorscheme desert
-
-" 全角文字の幅を2文字に固定する
+" ambiwidth double char
 set ambiwidth=double
 
-" タブを半角スペースで挿入する
-set expandtab
-
-" 0で始まる数値を8進数として扱わない
+" disable octal
 set nrformats-=octal
 
-" タブサイズ
+" insert tab space
+set expandtab
+
+" set tab size
 set tabstop=4
 set shiftwidth=4
 
-" インデント
+" indent setting
 set autoindent
 set smartindent
 set cindent
 
-" インクリメンタルサーチ
+" incremental search
 set incsearch
 
-" スマートケース
+" smartcase
 set ignorecase
 set smartcase
 
-" 検索が末尾まで進んだら先頭に移動
+" wrap search result
 set wrapscan
 
-" 検索結果をハイライト
+" highlight search
 set hlsearch
 
+" --- end vim settings ---
 
-" キーバインド
-" EscEscでハイライトを切り替える
+
+
+" --- key bindings ---
+
+" toggle highlight EscEsc
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 
-" jjでノーマルモードに戻る
+" change to normal mode jj
 inoremap <silent>jj <Esc>
+
+" toggle nerd tree
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+" --- end key bindings ---
+
