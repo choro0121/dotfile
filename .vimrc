@@ -119,6 +119,10 @@ set wrapscan
 " highlight search
 set hlsearch
 
+" show space
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+
 " --- end vim settings ---
 
 
