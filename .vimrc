@@ -1,5 +1,7 @@
 " --- dein scripts ---
 
+" --- dein scripts ---
+
 " set dein.vim path
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
@@ -38,6 +40,9 @@ syntax enable
 
 " set color scheme
 colorscheme onedark
+
+" start unite insertmode
+let g:unite_enable_start_insert=1
 
 " --- end dein scripts ---
 
@@ -135,8 +140,29 @@ nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 " change to normal mode jj
 inoremap <silent>jj <Esc>
 
+" space leader keybind
+let mapleader = "\<Space>"
+
+" save file 
+nnoremap <Leader>w :w<CR>
+
+" quit vim
+nnoremap <Leader>q :q<CR>
+
+" save and quit vim
+nnoremap <Leader>wq :wq<CR>
+
+" select line
+nnoremap <Leader>a v$ho0
+vnoremap <Leader>a $ho0
+
+" unite
+nnoremap <Leader>b :Unite buffer<CR>
+
+" unite open current dir
+nnoremap <Leader>d :UniteWithBufferDir -buffer-name=files file<CR>
+
 " toggle nerd tree
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <Leader>t :NERDTreeToggle<CR>
 
 " --- end key bindings ---
-
