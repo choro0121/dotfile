@@ -5,11 +5,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # check vscode
 if [ -n "$PS1" ]; then
-  # start tmux
-  if [ $SHLVL = 1 ]; then
-    exec tmux
-  fi
-
   # start fish
   exec fish
 fi
