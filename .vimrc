@@ -128,6 +128,10 @@ set hlsearch
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
+" status line
+set laststatus=2
+let g:lightline = { 'colorscheme': 'onedark', }
+
 " --- end vim settings ---
 
 
