@@ -2,7 +2,10 @@
 	quotepath = false
 	whitespace = cr-at-eol
 	autoCRLF = false
+[color]
+	ui = true
 [alias]
+	alias = config --get-regexp ^alias
 	ss = status
 	br = branch
 	brm = branch -m
@@ -10,14 +13,24 @@
 	brdd = branch -D
 	co = checkout
 	cob = checkout -b
+	fe = fetch
+	pl = pull
+	plr = pull -r
+	pu = push
+	ada = add -A
 	adu = add -u
-	adup = add -u -p
-	com = commit
+	cm = commit
 	mg = merge --no-ff
 	mgff = merge -ff
 	cp = cherry-pick
-	log1 = log -1
-	log2 = log -2
-	log3 = log -3
+	tree = log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
 	logo = log --oneline
 	logn = log --name-status --oneline
+	sk = update-index --skip-worktree
+	nsk = update-index --no-skip-worktree
+	lsk = !git ls-files -v | grep ^S
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
